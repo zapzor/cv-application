@@ -15,8 +15,8 @@ class Main extends React.Component {
       phoneNumber: '',
       qualifications: '',
       university: '',
-      from: '',
-      until: '',
+      fromEducation: '',
+      untilEducation: '',
       company: '',
       position: '',
       activities: '',
@@ -28,6 +28,7 @@ class Main extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.redoForm = this.redoForm.bind(this);
   }
 
   handleSubmit(event) {
@@ -39,6 +40,10 @@ class Main extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  }
+
+  redoForm() {
+    this.setState({ formDisplay: !this.state.formDisplay });
   }
 
   render() {
@@ -58,9 +63,20 @@ class Main extends React.Component {
         <Results
           firstName={this.state.firstName}
           lastName={this.state.lastName}
+          title={this.state.title}
+          email={this.state.email}
+          phoneNumber={this.state.phoneNumber}
           qualifications={this.state.qualifications}
+          university={this.state.university}
+          fromEducation={this.state.fromEducation}
+          untilEducation={this.state.untilEducation}
           company={this.state.company}
+          position={this.state.position}
+          activities={this.state.activities}
+          fromWork={this.state.fromWork}
+          untilWork={this.state.untilWork}
           formDisplay={this.state.formDisplay}
+          redoForm={this.redoForm}
         />
       </div>
     );

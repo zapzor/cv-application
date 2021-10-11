@@ -26,13 +26,13 @@ export class General extends Component {
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='email'
           placeholder='Email'
           name='email'
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='number'
           placeholder='Phone Number'
           name='phoneNumber'
           onChange={handleChange}

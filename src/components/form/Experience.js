@@ -25,13 +25,13 @@ export class Experience extends Component {
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='date'
           placeholder='From'
           name='fromWork'
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='date'
           placeholder='Until'
           name='untilWork'
           onChange={handleChange}

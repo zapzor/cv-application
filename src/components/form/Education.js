@@ -20,13 +20,13 @@ export class Education extends Component {
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='date'
           placeholder='From'
           name='fromEducation'
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='date'
           placeholder='Until'
           name='untilEducation'
           onChange={handleChange}
