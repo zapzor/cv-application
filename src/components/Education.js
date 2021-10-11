@@ -5,12 +5,7 @@ export class Education extends Component {
     return (
       <div>
         <h3>Education and training</h3>
-        <form onSubmit={this.onSubmit}>
-          <input type='text' placeholder='Qualification' required />
-          <input type='text' placeholder='University' required />
-          <input type='text' placeholder='From' required />
-          <input type='text' placeholder='Until' required />
-        </form>
+        <form onSubmit={this.onSubmit}></form>
       </div>
     );
   }
