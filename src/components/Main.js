@@ -1,5 +1,7 @@
 import React from 'react';
-import Form from './Form';
+import General from './General';
+import Education from './Education';
+import Experience from './Experience';
 import Results from './Results';
 
 class Main extends React.Component {
@@ -40,18 +42,24 @@ class Main extends React.Component {
   }
 
   render() {
+    const { formDisplay } = this.state;
+
+    let displayControl = formDisplay ? 'display' : 'notDisplayed';
     return (
       <div>
-        <Form
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          formDisplay={this.state.formDisplay}
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-        />
+        <form className={displayControl} onSubmit={this.handleSubmit}>
+          <General handleChange={this.handleChange} />
+          <Education handleChange={this.handleChange} />
+          <Experience handleChange={this.handleChange} />
+          <button type='submit' value='Submit'>
+            Submit
+          </button>
+        </form>
         <Results
           firstName={this.state.firstName}
           lastName={this.state.lastName}
+          qualifications={this.state.qualifications}
+          company={this.state.company}
           formDisplay={this.state.formDisplay}
         />
       </div>
