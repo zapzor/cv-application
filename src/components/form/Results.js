@@ -3,6 +3,7 @@ import React from 'react';
 export default function Results(props) {
   let displayControl = props.formDisplay ? 'notDisplayed' : 'display';
   let {
+    firstName,
     lastName,
     title,
     email,
@@ -14,15 +15,15 @@ export default function Results(props) {
     company,
     position,
     activities,
-    workFrom,
-    workUntil,
+    fromWork,
+    untilWork,
     redoForm,
   } = props;
 
   return (
     <div className={displayControl}>
       <ul>
-        <li value={props.firstName}>First name: {props.firstName}</li>
+        <li>First name: {firstName}</li>
         <li>Last name:{lastName}</li>
         <li>Title: {title}</li>
         <li>Email: {email}</li>
@@ -34,8 +35,8 @@ export default function Results(props) {
         <li>Company Name: {company}</li>
         <li>Position Title: {position}</li>
         <li>Main Activities: {activities}</li>
-        <li>From: {workFrom}</li>
-        <li>Until: {workUntil}</li>
+        <li>From: {fromWork}</li>
+        <li>Until: {untilWork}</li>
       </ul>
 
       <button onClick={redoForm}>Redo</button>
