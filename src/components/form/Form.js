@@ -1,86 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import General from './General';
 import Education from './Education';
 import Experience from './Experience';
 import Results from './Results';
 
-class Main extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      firstName: '',
-      lastName: '',
-      title: '',
-      email: '',
-      phoneNumber: '',
-      qualifications: '',
-      university: '',
-      fromEducation: '',
-      untilEducation: '',
-      company: '',
-      position: '',
-      activities: '',
-      fromWork: '',
-      untilWork: '',
+export default function Form(props) {
+  const [form, setFormValue] = useState({
+    firstName: '',
+    lastName: '',
+    title: '',
+    email: '',
+    phoneNumber: '',
+    qualifications: '',
+    university: '',
+    fromEducation: '',
+    untilEducation: '',
+    company: '',
+    position: '',
+    activities: '',
+    fromWork: '',
+    untilWork: '',
+  });
+  const [formDisplay, setFormDisplay] = useState(true);
 
-      formDisplay: true,
-      cvDisplay: false,
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.redoForm = this.redoForm.bind(this);
-  }
-
-  handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    this.setState({ formDisplay: !this.state.formDisplay });
+    setFormDisplay((formDisplay) => !formDisplay);
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+  function handleChange(event) {
+    const { value, name } = event.target;
+
+    setFormValue((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
-  redoForm() {
-    this.setState({ formDisplay: !this.state.formDisplay });
+  function redoForm() {
+    setFormDisplay((formDisplay) => !formDisplay);
   }
 
-  render() {
-    const { formDisplay } = this.state;
+  let displayControl = formDisplay ? 'display' : 'notDisplayed';
 
-    let displayControl = formDisplay ? 'display' : 'notDisplayed';
-    return (
-      <div>
-        <form className={displayControl} onSubmit={this.handleSubmit}>
-          <General handleChange={this.handleChange} />
-          <Education handleChange={this.handleChange} />
-          <Experience handleChange={this.handleChange} />
-          <button type='submit' value='Submit'>
-            Submit
-          </button>
-        </form>
-        <Results
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          title={this.state.title}
-          email={this.state.email}
-          phoneNumber={this.state.phoneNumber}
-          qualifications={this.state.qualifications}
-          university={this.state.university}
-          fromEducation={this.state.fromEducation}
-          untilEducation={this.state.untilEducation}
-          company={this.state.company}
-          position={this.state.position}
-          activities={this.state.activities}
-          fromWork={this.state.fromWork}
-          untilWork={this.state.untilWork}
-          formDisplay={this.state.formDisplay}
-          redoForm={this.redoForm}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <form className={displayControl} onSubmit={handleSubmit}>
+        <General handleChange={handleChange} />
+        <Education handleChange={handleChange} />
+        <Experience handleChange={handleChange} />
+        <button type='submit' value='Submit'>
+          Submit
+        </button>
+      </form>
+      <Results
+        firstName={form.firstName}
+        lastName={form.lastName}
+        title={form.title}
+        email={form.email}
+        phoneNumber={form.phoneNumber}
+        qualifications={form.qualifications}
+        university={form.university}
+        fromEducation={form.fromEducation}
+        untilEducation={form.untilEducation}
+        company={form.company}
+        position={form.position}
+        activities={form.activities}
+        fromWork={form.fromWork}
+        untilWork={form.untilWork}
+        formDisplay={formDisplay}
+        redoForm={redoForm}
+      />
+    </div>
+  );
 }
-
-export default Main;

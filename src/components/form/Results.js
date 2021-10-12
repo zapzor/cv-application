@@ -1,32 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Results extends Component {
-  render() {
-    let control = this.props.formDisplay ? 'notDisplayed' : 'display';
+export default function Results(props) {
+  let displayControl = props.formDisplay ? 'notDisplayed' : 'display';
+  let {
+    lastName,
+    title,
+    email,
+    phoneNumber,
+    qualifications,
+    university,
+    fromEducation,
+    untilEducation,
+    company,
+    position,
+    activities,
+    workFrom,
+    workUntil,
+    redoForm,
+  } = props;
 
-    return (
-      <div className={control}>
-        <ul>
-          <li>First name: {this.props.firstName}</li>
-          <li>Last name:{this.props.lastName}</li>
-          <li>Title: {this.props.title}</li>
-          <li>Email: {this.props.email}</li>
-          <li>Phone Number: {this.props.phoneNumber}</li>
-          <li>Qualifications:{this.props.qualifications}</li>
-          <li>University: {this.props.university}</li>
-          <li>From: {this.props.fromEducation}</li>
-          <li>Until: {this.props.untilEducation}</li>
-          <li>Company Name: {this.props.company}</li>
-          <li>Position Title: {this.props.position}</li>
-          <li>Main Activities: {this.props.activities}</li>
-          <li>From: {this.props.workFrom}</li>
-          <li>Until: {this.props.workUntil}</li>
-        </ul>
+  return (
+    <div className={displayControl}>
+      <ul>
+        <li value={props.firstName}>First name: {props.firstName}</li>
+        <li>Last name:{lastName}</li>
+        <li>Title: {title}</li>
+        <li>Email: {email}</li>
+        <li>Phone Number: {phoneNumber}</li>
+        <li>Qualifications:{qualifications}</li>
+        <li>University: {university}</li>
+        <li>From: {fromEducation}</li>
+        <li>Until: {untilEducation}</li>
+        <li>Company Name: {company}</li>
+        <li>Position Title: {position}</li>
+        <li>Main Activities: {activities}</li>
+        <li>From: {workFrom}</li>
+        <li>Until: {workUntil}</li>
+      </ul>
 
-        <button onClick={this.props.redoForm}>Redo</button>
-      </div>
-    );
-  }
+      <button onClick={redoForm}>Redo</button>
+    </div>
+  );
 }
-
-export default Results;
